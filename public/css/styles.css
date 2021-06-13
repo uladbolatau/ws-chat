@@ -1,0 +1,201 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #2b172c;
+  font-family: "Ubuntu Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  min-height: 100%;
+  display: flex;
+}
+
+.wrapper {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  bottom: 15%;
+  left: 15%;
+  min-width: 300px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 20px 10px;
+  background-color: #311b32;
+  border: 2px solid #412e42;
+  border-radius: 3px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #f1ebf0;
+  margin-bottom: 20px;
+  padding: 0 5px 10px;
+  box-shadow: 0 2px 2px -2px #7b6e7b;
+}
+.menu__nickname {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: default;
+}
+.menu__nickname:before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 100%;
+  background-color: #fe5952;
+}
+.menu--connecting .menu__nickname:before {
+  background-color: #54c32c;
+}
+.menu--open .menu__nickname:before {
+  background-color: #54c32c;
+}
+.menu--closing .menu__nickname:before {
+  background-color: #54c32c;
+}
+.menu--closed .menu__nickname:before {
+  background-color: #d3d0d4;
+}
+.menu--error .menu__nickname:before {
+  background-color: #fe5952;
+}
+.menu__nickname-state {
+  margin-left: 20px;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+.menu--connecting .menu__nickname-state {
+  color: #fe5952;
+}
+.menu--open .menu__nickname-state {
+  color: #54c32c;
+}
+.menu--closing .menu__nickname-state {
+  color: #fe5952;
+}
+.menu--closed .menu__nickname-state {
+  color: #d3d0d4;
+}
+.menu--error .menu__nickname-state {
+  color: #fe5952;
+}
+.menu__nickname:hover .menu__nickname-state {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.msg {
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.msg:first-child {
+  margin-bottom: 0;
+}
+.msg-wrapper {
+  flex-grow: 1;
+  margin-bottom: 20px;
+  padding-right: 10px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.msg-wrapper::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #2b172c;
+}
+.msg-wrapper::-webkit-scrollbar {
+  width: 10px;
+  background-color: #2b172c;
+}
+.msg-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #412e42;
+}
+.msg__time {
+  color: #1dafef;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  font-size: 14px;
+}
+.msg:hover .msg__time {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+.msg__label {
+  margin-right: 20px;
+  font-weight: 400;
+  color: #1dafef;
+}
+.msg--answer .msg__label {
+  color: #1dafef;
+}
+.msg__text {
+  color: #f1ebf0;
+  margin: 0;
+  width: 100%;
+}
+.msg--answer .msg__text {
+  color: #f1ebf0;
+}
+
+.send-msg {
+  display: flex;
+  padding: 10px 5px 0;
+  box-shadow: 0 -2px 2px -2px #7b6e7b;
+}
+
+.nickname {
+  margin: auto;
+  display: flex;
+}
+
+input {
+  display: block;
+  margin-right: 10px;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: #f4f1f5;
+  caret-color: #0eb427;
+  outline: none;
+}
+input::placeholder {
+  color: #7b6e7b;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #7b6e7b;
+  padding: 10px 15px;
+  border-radius: 3px;
+  transition: background 300ms ease-in-out;
+  border: 1px solid #412e42;
+  outline: none;
+}
+button:hover, button:focus {
+  background-color: #2b172c;
+  transition: background 300ms ease-in-out;
+}
+button:active {
+  background-color: #412e42;
+  transition: background 300ms ease-in-out;
+}
+
+/*# sourceMappingURL=styles.css.map */

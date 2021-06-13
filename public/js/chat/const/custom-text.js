@@ -1,0 +1,13 @@
+const TEXT_LOGOUT = "Logout";
+const TEXT_MSG_PLACEHOLDER = "Enter message";
+const TEXT_MSG_SEND = "Send";
+const TEXT_NICKNAME_BTN = "Enter";
+const TEXT_NICKNAME_PLACEHOLDER = "Your nickname";
+
+export {
+  TEXT_LOGOUT,
+  TEXT_MSG_PLACEHOLDER,
+  TEXT_MSG_SEND,
+  TEXT_NICKNAME_BTN,
+  TEXT_NICKNAME_PLACEHOLDER,
+};
