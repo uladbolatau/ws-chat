@@ -91,6 +91,7 @@ class ChatLayout {
     sendMsgInput.onkeyup = (e) => {
       if (e.keyCode === 13 && !!sendMsgInput.value.trim()) {
         sendMessageCallback.call(context, sendMsgInput.value.trim());
+        sendMsgInput.value = "";
       }
     };
 
@@ -134,40 +135,33 @@ class ChatLayout {
   }
 
   getMsgLayout(msg) {
-    console.log(msg);
-
-    let wrapper = document.createElement("div");
-    let label = document.createElement("span");
-    let time = document.createElement("span");
-    let text = document.createElement("p");
-    let msgTime = new Date(msg.time);
-
-    label.innerHTML = msg.from;
-    time.innerHTML = `[${this.addZeroToTime(
-      msgTime.getHours()
-    )}:${this.addZeroToTime(msgTime.getMinutes())}:${this.addZeroToTime(
-      msgTime.getSeconds()
-    )}, ${msgTime.getDate()} ${
-      MONTH_NAMES[msgTime.getMonth()]
-    } ${msgTime.getFullYear()}]`;
-    text.innerHTML = msg.message;
-    time.classList.add(CLASSNAMES_MSG.time);
-    text.classList.add(CLASSNAMES_MSG.text);
-    label.classList.add(CLASSNAMES_MSG.label);
-    wrapper.classList.add(CLASSNAMES_MSG.msg);
-    wrapper.append(label, time, text);
-
-    return wrapper;
-  }
-
-  getAllMsgLayout(data) {
     let fragment = new DocumentFragment();
 
-    data.forEach((msg) => {
-      fragment.append(this.getMsgLayout(msg));
+    msg.forEach((msg) => {
+      let wrapper = document.createElement("div");
+      let label = document.createElement("span");
+      let time = document.createElement("span");
+      let text = document.createElement("p");
+      let msgTime = new Date(msg.time);
+
+      label.innerHTML = msg.from;
+      time.innerHTML = `[${this.addZeroToTime(
+        msgTime.getHours()
+      )}:${this.addZeroToTime(msgTime.getMinutes())}:${this.addZeroToTime(
+        msgTime.getSeconds()
+      )}, ${msgTime.getDate()} ${
+        MONTH_NAMES[msgTime.getMonth()]
+      } ${msgTime.getFullYear()}]`;
+      text.innerHTML = msg.message;
+      time.classList.add(CLASSNAMES_MSG.time);
+      text.classList.add(CLASSNAMES_MSG.text);
+      label.classList.add(CLASSNAMES_MSG.label);
+      wrapper.classList.add(CLASSNAMES_MSG.msg);
+      wrapper.append(label, time, text);
+      fragment.append(wrapper);
     });
 
-    this.msgWrapper.append(fragment);
+    this.msgWrapper.prepend(fragment);
   }
 
   addZeroToTime(num) {

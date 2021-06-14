@@ -6,14 +6,13 @@ class ChatNotify {
   }
 
   message(msg) {
-    setTimeout(() => {
-      if (!document.hasFocus()) {
-        new Notification(msg.from, {
-          body: msg.message,
-          icon: FAVICON_PATH,
-        });
-      }
-    }, 1000);
+    console.log(msg);
+    if (!document.hasFocus()) {
+      new Notification(msg.from, {
+        body: msg.message,
+        icon: FAVICON_PATH,
+      });
+    }
   }
 }
 

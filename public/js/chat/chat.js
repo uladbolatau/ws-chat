@@ -70,8 +70,8 @@ class Chat {
   onmessage() {
     this.ws.onmessage = (event) => {
       console.log("onmessage", this.ws.readyState, event);
-      // this.notify.message(msg);
-      this.layout.getAllMsgLayout(JSON.parse(event.data));
+      this.layout.getMsgLayout(JSON.parse(event.data));
+      this.notify.message(JSON.parse(event.data)[0]);
     };
   }
 
@@ -79,16 +79,9 @@ class Chat {
     let msg = {
       from: this.getUser(),
       message: msgText,
-      id: this.generateId(),
-      time: Date.now(),
     };
 
-    console.log(JSON.stringify(msg));
-
-    msg = "test";
-
-    this.ws.send(msg);
-    // this.ws.send(JSON.stringify(msg));
+    this.ws.send(JSON.stringify(msg));
   }
 
   getUser() {
@@ -101,12 +94,6 @@ class Chat {
 
   removeUser(value) {
     localStorage.removeItem(LS_NICKNAME);
-  }
-
-  generateId() {
-    return Math.random()
-      .toString(16)
-      .slice(2);
   }
 }
 
